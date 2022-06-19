@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/adminstyle.css" rel="stylesheet">
+  <title>Админ: Ученик</title>
+ 
+</head>
+
+<body>
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  <div class="container">
+    <div class="nbody">
+     <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2"><u>Отчеты</u></a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                         <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Методические указания</a></li>
+                          <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+                </div>
+                <div class="head-5">
+                      <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                  <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+                </div>
+                <div class="head-8">
+                    
+                </div>
+                <div class="head-9"></div>
+            </div>
+
+
+      <div class="main">
+        <div class="main-head">
+          <h3>Ученики</h3>
+        </div>
+
+      </div>
+     
+      <br>
+
+      <table align="center">
+        <tbody>
+          <tr class="name">
+
+            <td style="width: 300px;">ФИО</td>
+            <td style="width: 120px;">Дата рождения</td>
+            <td style="width: 120px;">Телефон</td>
+            <td style="width: 300px;">Родитель</td>
+            <td style="width: 120px;">Телефон родителя</td>
+            <td style="width: 120px;">Договор</td>
+            <td style="width: 120px;">Логин</td>
+            <td style="width: 120px;">Пароль</td>
+
+          </tr>
+          
+         {{#each menustuds}}
+          <tr>
+             
+            <td>{{StN}}</td>
+            <td>{{StB}}</td>
+            <td>{{StP}}</td>
+            
+            <td>
+             {{ParN}}               
+            </td>
+            <td>
+             {{ParP}}
+            </td>
+        
+           
+
+          <td><input type="button" value="Договор" onClick="window.open('{{DocContract}}')"></td>
+          <td>{{Login}}</td>
+         <td>{{KPassword}}</td>
+
+            
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!--
+  <script>
+    let i = 0;
+    let ArrPhone = new Array();
+    ArrPhone = [];
+    {{#each menupar}}
+      ArrPhone.push("{{Phone}}");
+    {{/each}}
+    
+    while(i < {{menup}}){
+      select = document.getElementsByClassName('phone')[i];
+        var opt = document.createElement('span');
+        opt.value = i;
+        opt.innerHTML = ArrPhone[i];
+        select.appendChild(opt);
+    ++i;
+    };
+i = 0;
+    let ArrPerson = new Array();
+    ArrPerson = [];
+    {{#each menupar}}
+      ArrPerson.push("{{NamePerson}}");
+    {{/each}}
+    while(i < {{menup}}){
+      select = document.getElementsByClassName('parent')[i];
+        var opt = document.createElement('span');
+        opt.value = i;
+        opt.innerHTML = ArrPerson[i];
+        select.appendChild(opt);
+    ++i;
+    };
+    </script>-->
+  </body>
+</html>

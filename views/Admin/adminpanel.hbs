@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/adminstyle.css" rel="stylesheet">
+
+  <title>Админ: Расписание</title>
+</head>
+
+<body>
+  
+  <div class="container">
+    <div class="nbody">
+      <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                         <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Методические указания</a></li>
+                          <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3"><u>Расписание</u></a>
+                </div>
+                <div class="head-5">
+                      <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                  <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+                </div>
+                <div class="head-8">
+                    
+                </div>
+                <div class="head-9"></div>
+            </div>
+
+      <div class="main">
+        <div class="main-head">
+          <h3>Расписание</h3>
+        </div>
+
+        <table align="center">
+          <tr class="name">
+            <td style="width: 200px;">  Дата следующего урока </td>
+            <td style="width: 300px;">Курс</td>
+            <td style="width: 200px;"> Группа </td>
+            <td style="width: 200px;">  Преподаватель</td>
+            <td style="width: 200px;"> Статус </td>
+            <td>  Действие </td>
+          </tr>
+          
+          <tr>
+            <form action="AddSch" method="POST">
+            <td>
+              <input name="DateSch" class="caledar" type="datetime-local" id="date">
+            </td>
+            <td>
+              
+                <select name="Course">
+                  <option disabled>Выберите курс</option>
+                  {{#each menu6}}
+                  <option value="{{IDCourse}}">{{NameCourse}}</option>
+                  {{/each}}
+                </select>
+              
+            </td>
+            <td>
+              
+                <select name="Group">
+                  <option disabled>Выберите группу</option>
+                  {{#each menu7}}
+                  <option value="{{IDGroup}}">{{NameGroup}}</option>
+                  {{/each}}
+                </select>
+       
+            </td>
+            <td>
+              
+                <select name="Teacher">
+                  <option disabled>Выберите преподавателя</option>
+                  {{#each menu8}}
+                  <option value="{{IDTeacher}}">{{NamePerson}}</option>
+                  {{/each}}
+                </select>
+              
+            </td>
+            <td>
+              
+                <select name="Status">
+                  <option disabled></option>
+                  {{#each menu9}}
+                  <option value="{{IDStatus}}">{{TypeStatus}}</option>
+                  {{/each}}
+                </select>
+              
+            </td>
+            <td><button class="but-chan1" onclick="alert('Данные были добавлены')">
+                <div style="margin: 5px;"><img class="img-change"
+                    src="images\ok.png"><span>Сохранить</span></div>
+              </button>
+              <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+         </form>
+              <div style="margin: 5%;"></div>
+              
+            </td>
+          </tr>
+          {{#each menu5}}
+          <tr>
+            <form action="SaveLesson" method="POST">
+              
+              <td> <input name="Date" type="text" value="{{DateLesson}}"></td>
+              <td> <select class="Course" name="Course">
+                  <option value="{{IDCourse}}">{{NameCourse}}</option>                  
+                </select>
+              </td>
+              <td> <select class="Group" name="Group">
+                <option value="{{IDGroup}}">{{NameGroup}}</option>
+            </td>
+              <td>
+                <select class="Person" name="Person">
+                  <option value="{{IDTeacher}}">{{NamePerson}}</option>
+                </select>
+              </td>
+              <td> 
+                <select class="Status" name="Status">
+                  <option value="{{IDStatus}}">{{TypeStatus}}</option>
+                </select>
+              </td>
+              <td> <button type="submit" class="but-chan1" onclick="alert('Данные были изменены')">
+                  <div style="margin: 5px;"><img class="img-change"
+                      src="images\ok.png"><span>Сохранить</span></div>
+                </button>
+                <input name="Schedule" hidden type="number" value="{{IDSchedule}}"> 
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            </form>
+                <div style="margin: 5%;"></div>
+                <form action="DelSch" method="post">
+                  <input name="Schedule" hidden type="number" value="{{IDSchedule}}"> 
+                <button type="submit" class="but-chan2" onclick="alert('Данные были удалены')">
+                  
+                  <div style="margin: 5px"><img class="img-change"
+                      src="images\del.png"><span>Удалить</span></div>
+                      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                </button></form>
+               
+              </td>
+          </tr>
+          {{/each}}
+          </form>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    //группа
+    let i = 0;
+    let j = 0;
+    let masG = new Array;
+    masG = [];
+    {{#each menu7}}
+    masG.push("{{NameGroup}}");
+    {{/each}}
+    
+      while( i < masG.length){
+        let select = document.getElementsByClassName('Group')[i];
+        while(j < masG.length){
+          var gr = document.createElement('option');
+          gr.value = j+1;
+          gr.innerHTML = masG[j];
+          select.appendChild(gr);
+          j++;
+      }
+      i++;
+      j=0;
+    }
+         //статус
+    i = 0;
+    j = 0;
+     masS = new Array;
+    masS = [];
+    {{#each menu9}}
+    masS.push("{{TypeStatus}}");
+    {{/each}}
+    
+      while( i < masS.length){
+        let select = document.getElementsByClassName('Status')[i];
+        while(j < masS.length){
+          var gr = document.createElement('option');
+          gr.value = j+1;
+          gr.innerHTML = masS[j];
+          select.appendChild(gr);
+          j++;
+      }
+      i++;
+      j=0;
+    }
+     //преподаватель
+    i = 0;
+    j = 0;
+     masP = new Array;
+    masP = [];
+    {{#each menu8}}
+    masP.push("{{NamePerson}}");
+    {{/each}}
+    
+      while( i < masP.length){
+        let select = document.getElementsByClassName('Person')[i];
+        while(j < masP.length){
+          var pr = document.createElement('option');
+          pr.value = j+1;
+          pr.innerHTML = masP[j];
+          select.appendChild(pr);
+          j++;
+      }
+      i++;
+      j=0;
+    }
+    //курс
+
+    i = 0;
+    j = 0;
+     masC = new Array;
+    masC = [];
+    {{#each menu6}}
+    masC.push("{{NameCourse}}");
+    {{/each}}
+    
+      while( i < masC.length){
+        let select = document.getElementsByClassName('Course')[i];
+        while(j < masC.length){
+          var pr = document.createElement('option');
+          pr.value = j+1;
+          pr.innerHTML = masC[j];
+          select.appendChild(pr);
+          j++;
+      }
+      i++;
+      j=0;
+    }
+
+  
+  </script>
+</body>
+
+</html>

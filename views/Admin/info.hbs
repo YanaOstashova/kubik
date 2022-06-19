@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/adminstyle.css" rel="stylesheet">
+  <script src="/script/find.js"></script>
+  <title>Админ: Инфо</title>
+</head>
+
+<body>
+  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+  <div class="container">
+
+    <div class="nbody">
+
+     <div class="menu">
+            <div class="head-1">
+                <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                <ul id='submenu' class="sub-menu">
+                    <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                    <li><a class="choose-item" href="users">Юзеры</a></li>
+                    <li><a class="choose-item" href="person">Персона</a></li>
+                    <li><a class="choose-item" href="date">Даты</a></li>
+                     <li><a class="choose-item" href="group">Группы</a></li>
+                    <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                    <li><a class="choose-item" href="parent">Родитель</a></li>
+                    <li><a class="choose-item" href="student">Ученик</a></li>
+                    <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                </ul>
+            </div>
+            <div class="head-2">
+                <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                <ul id='submenu1' class="sub-menu">
+                    <li><a class="choose-item" href="studgroup">Группы</a></li>
+                    <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                     <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                </ul>
+            </div>
+            <div class="head-3">
+                <a href="#submenu3" class="main-item" tabindex="3"><u>Курсы</u></a>
+                <ul id='submenu3' class="sub-menu">
+                    <li><a class="choose-item" href="admintype">Направления</a></li>
+                    <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                    <li><a class="choose-item" href="programma">Программа</a></li>
+                      <li><a class="choose-item" href="info">Инфо</a></li>
+                </ul>
+            </div>
+            <div class="head-4">
+                <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+            </div>
+            <div class="head-5">
+                  <a href="request" class="main-item" tabindex="4">Заявки</a>
+            </div>
+
+            <div class="head-6">
+              <a href="task" class="main-item" tabindex="4">Задачи</a>
+            </div>
+
+            <div class="head-7">
+                <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+            </div>
+            <div class="head-8">
+                
+            </div>
+            <div class="head-9"></div>
+        </div>
+      <div class="main">
+        <div class="main-head">
+          <h3>Инфо</h3>
+        </div>
+        <div class="find-photo">
+          <!--
+          <form>
+              <input class="place_for_search" type="text" id="text-to-find" value="" placeholder="Search" autofocus> 
+              <input class="button_for_turn_back" type="button" onclick="javascript: FindOnPage('text-to-find',false); return false;" value=" " title="Отменить поиск">
+              <input class="button_for_search" type="submit" onclick="javascript: FindOnPage('text-to-find',true); return false;" value=" " title="Начать поиск">
+            </form>
+        -->
+
+        </div>
+        <br>
+
+        <table align="center">
+          <tbody>
+            <tr class="name">
+
+              <td style="width:700px ;">Текст</td>
+              <td>Курс</td>
+              <td class="change">Действие</td>
+            </tr>
+            <tr>
+              <form action="AddInfo" method="post">
+                <td><input name="Text" style="width:670px ;" type="text"></td>
+                <td> <select name="Cours">
+
+                    <option disabled>Выберите курс</option>
+                    {{#each menucor}}
+                    <option value="{{IDCourse}}"> {{NameCourse}} </option>
+                    {{/each}}
+
+                  </select>
+                </td>
+                <td><button class="but-chan1" onclick="alert('Данные были добавлены')">
+                    <div style="margin: 5px;"><img class="img-change" src="images\ok.png"><span>Сохранить</span></div>
+
+                  </button>
+              </form>
+
+              </td>
+
+            </tr>
+            {{#each menuin}}
+            <tr>
+              <form action="UpInfo" method="post">
+                <input name="Info" hidden type="number" value="{{IDInfo}}">
+                <td><input name="Text" style="width:670px ;" type="text" value="{{TextInfo}}"></td>
+                <td>
+                  {{NameCourse}}
+                </td>
+
+                <td><button class="but-chan1" onclick="alert('Данные были изменены')">
+                    <div style="margin: 5px;"><img class="img-change" src="images\ok.png"><span>Сохранить</span></div>
+
+                  </button>
+              </form>
+              <form action="DelInfo" method="post">
+                <div style="margin: 4%;"></div>
+
+                <input name="Info" hidden type="number" value="{{IDInfo}}">
+                <button class="but-chan2" onclick="alert('Данные были удалены')">
+
+                  <div style="margin: 5px"><img class="img-change" src="images\del.png"><span>Удалить</span></div>
+                </button>
+              </form>
+              </td>
+
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="\css\studstyle.css">
+    <title>Админпанель</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box-1">
+          <div class="header">
+                <div class="head-1">
+                    <img src="/images/logo.png" width="100" height="100">
+
+                </div>
+                <div class="head-2">
+                    <a class="head-text " href="/teacherpanel/{{idteacher}}">Курс</a>
+                </div>
+                <div class="head-3">
+                    <a class="head-text " href="/teacherschedule/{{idteacher}}">Расписание</a>
+                </div>
+                <div class="head-4">
+                    <a class="head-text " href="/teachertask/{{idteacher}}">Задачи</a>
+
+                </div>
+                <div class="head-5">
+                    <a class="head-text " href="/teachermessage/{{idteacher}}">Уведомления</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="stud-header">
+        <h3>Расписание</h3>
+    </div>
+
+    <div class="stud-body">
+
+            <div>
+
+            <table class="stud-table">
+                <tr>
+                    <th class="name-schedule">
+                        Дата урока
+                    </th>
+                    <th class="name-schedule">
+                        Курс
+                    </th>
+                  
+
+                    <th class="name-schedule">
+                        Группа
+                    </th>
+                </tr>
+                {{#each menusch}}
+                <tr>
+                    <td class="text-schedule">
+                        <div>
+                            <p>{{DateLesson}}</p>
+                        </div>
+                    </td>
+                    <td class="text-schedule">
+                        <div>
+                            <p>{{NameCourse}}</p>
+                        </div>
+                    </td>
+                 
+                    <td class="text-schedule">
+                        <div>
+                            <p>{{NameGroup}}</p>
+                        </div>
+                    </td>
+
+                </tr>
+                {{/each}}
+
+            </table>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

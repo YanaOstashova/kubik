@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="\css/stylenew.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Детский центр "Кубик"</title>
+    <link rel="stylesheet" media="screen,projection" href="\css/ui.totop.css" />
+    <link rel="stylesheet" href="\css/burgerstyle.css">
+    <link rel="stylesheet" href="\css/footerstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <script>
+        function add(){
+            let name = document.getElementById('name').value;
+            let phone = document.getElementById('phone').value;
+            console.log(name+'1' + phone+'1');
+            if (name !== '' && phone !== '')
+                alert('Спасибо. Заявка принята. В ближайшее время с вами свяжется наш менеджер.')
+        }
+         function addReq(){
+            let name = document.getElementById('nameReq').value;
+            let req = document.getElementById('text-form').value;
+          
+            if (name !== '' && req !== '')
+                alert('Спасибо за ваш отзыв!')
+        }
+        </script>
+    <header>
+        <div class="container-fluid head-up">
+            
+                <section class="top-nav">
+                    <div>
+                        <img src="\images/logo.png" width="75" height="75">
+                    </div>
+                    <label class="menu-button-container" for="menu-toggle">
+                        <div class="menu-button">
+
+                        </div>
+                    </label>
+                    <input id="menu-toggle" type="checkbox"/>
+
+                    <ul class="menu">
+                    <li>
+                        <a class="text-home" href="#Cource">Курсы</a>
+                    </li>
+                    <li>
+                        <a class="text-home" href="#Reviews">Отзывы</a>
+                    </li>
+                    <li>
+                        <a class="text-home" href="#About">О нас</a>
+                    </li>
+                    <li>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top" title="tel:+79129497733" class="text-home"
+                        href="tel:+79129497733">Позвонить</a>
+                    </li>
+                    <li>
+                        <a class="text-home" href="authorization">Личный кабинет</a>
+                    </li>
+                </ul>
+                </section>
+        </div>
+    </header>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                <div>
+                    <h1 class="txt-main">
+                        Центр обучения, развлечения и досуга детей в городе Ухта
+                    </h1>
+                    <br>
+                    <p class="txt-main">
+                        Запишите ребенка на БЕСПЛАТНОЕ пробное занятие прямо сейчас!
+                    </p>
+                    <p class="txt-main"><button class="floating-button"><a href="#Write" class="txt-but">Записаться</a></button></p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6">
+                <img style="width: 100% ;" src="\images/photo.png">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container ">
+        <p class="course-text">Программирование</p>
+        <div class="row  gy-2">
+            {{#each menu1}}
+            <div class="col-lg-5">
+                    <div class="infocourse-1 comment left-col">
+                        <a class="name-course size" href="aboutcourse/{{IDCourse}}">{{NameCourse}}</a>
+                        <p>{{Age}}</p>
+                      
+                        <p class="size">{{AboutCourse}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div>
+            <p class="course-text">Творчество</p>
+        </div>
+        <div class="row gy-2">
+            {{#each menu2}}
+            <div class="col-lg-5 ">
+                <div class="infocourse-1  comment left-col">
+                    <a class="name-course size" href="aboutcourse/{{IDCourse}}">{{NameCourse}}</a>
+                    <p>{{Age}}</p>
+                    <p class="size">{{AboutCourse}}</p>
+                </div>
+            </div>
+            {{/each}}
+            
+        </div>
+        <div>
+            <p class="course-text">Развлечения</p>
+        </div>
+        <div class="row gy-2">
+            {{#each menu3}}
+            <div class="col-lg-5">
+                <div class="infocourse-1 comment left-col">
+                        <a class="name-course " href="aboutcourse/{{IDCourse}}">  {{NameCourse}}</a>
+                        <p>{{Age}}</p>
+                       
+                        <p class="size">{{AboutCourse}}</p>
+                </div>
+            </div>
+            {{/each}}
+            
+        </div>
+        <div class="choice">
+            <h4>ПОМОЖЕМ С ВЫБОРОМ</h4>
+            <p>
+                <button class="floating-button"><a href="#Write" class="txt-but">Консультация</a></button>
+            </p>
+        </div>
+        <div class="choice">
+            <div class="container">
+                <div class="row" id="About">
+                    <div class="col-12">
+                        <h4>О НАС</h4>
+                        <br>
+                        <p class="aboutus">
+                            Детский центр “Кубик” - это место, где дети могут получить знания в игровой форме по разным
+                            направлениям: программирование, рисование, финансовая грамотность и цифровое творчество.
+                            Все курсы составлены профессиональными методистами с учетом возврастных возможностей
+                            ребенка.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <p class="about">
+                            НАШ АДРЕС:
+                        </p>
+                        <p class="about">
+                            г. Ухта, ул.Тиманская, д.13
+                        </p>
+                    </div>
+                    <div class="col-sm-8">
+                        <a href="https://yandex.ru/maps/10945/uhta/?utm_medium=mapframe&utm_source=maps"
+                            style="color:#eee;font-size:12px;top:0px;"></a>
+                        <a href="https://yandex.ru/maps/10945/uhta/house/timanskaya_ulitsa_13/YUoYcAJiT0wPQFhpfXl0eXtqYw==/?ll=53.652698%2C63.558798&source=wizgeo&utm_medium=mapframe&utm_source=maps&z=16"
+                            style="color:#eee;font-size:12px;"></a><iframe
+                            src="https://yandex.ru/map-widget/v1/-/CCU5uPt0CC" height="400" width="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <br>
+    <div class="choice" id="Reviews">
+        <h4>ОТЗЫВЫ</h4>
+    </div> <br>
+    <div class="container ">
+        <div class="row gy-2">
+            {{#each menu4}}
+            <div class="col-lg-6">
+                <div class="infocourse-1 comment left-col">
+                        
+                        <p>{{Author}}</p>
+                       
+                        <p class="size">{{TextFeedback}}</p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="choice">
+            <button class="floating-button"><a  onclick='openform()'>Написать</button>
+        </div>
+        <div class="row" id='form'>
+            <form  action="/newrequest" autocomplete="off" method="POST">
+                <div class="col">
+                    <p>Ваше имя:</p>
+                    <input type="text" id="nameReq" name="nameReq" required oninput="this.value=this.value.replace(/[^а-яА-Я]/g,'');">
+                    <p>Ваш отзыв:</p>
+                </div>
+                <textarea name="Reques" id='text-form' style="font-size:22px"></textarea>
+                <div class="choice">
+                    <button onclick="addReq()" class="floating-button" type="submit"><a class="txt-but">Отправить</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="choice">
+        <h4>ФОТО</h4>
+    </div>
+    <div class="container comment">
+        <div class="row">
+            <div class="col-sm">
+                <br>
+                <img class="img-fluid" src="\images/1.jpg">
+            </div>
+            <div class="col-sm">
+                <br>
+                <img class="img-fluid" src="\images/3.jpg">
+            </div>
+            <div class="col-sm">
+                <br>
+                <img class="img-fluid" src="\images/7.jpg">
+            
+            </div>
+        </div>
+    </div>
+    <div class="choice">
+        <br>
+        <h4>ОТВЕТЫ НА ЧАСТЫЕ ВОПРОСЫ</h4>
+    </div>
+    <div class="container">
+        <div style="margin-top: 5%" class="question">
+            <div class="text-ques">
+                <h5>Со скольки лет можно начинать обучение?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t1')" ; return false><img
+                        src="\images/plus.png" width="30" height="30">
+
+                </button>
+
+            </div>
+            <span id="t1" class="answer-ques">
+                У каждого курса своя возратсная категория. Для более точной информации перейдите на страницу нужного
+                Вам курса.
+            </span>
+        </div>
+
+        <div class="question">
+            <div class="text-ques">
+                <h5>Нужен ли ребенку опыт?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t2')" ; return false><img
+                        src="\images/plus.png" width="30" height="30"> </button>
+            </div>
+            <span id="t2" class="answer-ques">
+                Нет, опыт совсем не обязателен. Здорово, если ваш ребенок начнет учебу, уже имея какие-то знания и
+                навыки. Мы поможем ему их расширить. Если опыта нет — это тоже здорово, ведь наши программы
+                рассчитаны на то, чтобы обучить всему с нуля.
+            </span>
+
+        </div>
+        <div class="question">
+            <div class="text-ques">
+                <h5>Как часто формируются группы?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t3')" ; return false><img
+                        src="\images/plus.png" width="30" height="30"> </button>
+            </div>
+            <span id="t3" class="answer-ques">
+                Группы формируются по мере набора детей.
+            </span>
+        </div>
+        <div class="question">
+            <div class="text-ques">
+                <h5>Сколько человек занимается в одной группе?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t4')" ; return false><img
+                        src="\images/plus.png" width="30" height="30"> </button>
+            </div>
+            <span id="t4" class="answer-ques">
+                Во всех группах до 10 человек
+            </span>
+        </div>
+        <div class="question">
+            <div class="text-ques">
+                <h5>Проходят ли занятия летом?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t5')" ; return false><img
+                        src="\images/plus.png" width="30" height="30"> </button>
+            </div>
+            <span id="t5" class="answer-ques">
+                Летом занятий нет, но не спешите унывать. Летом действует лагерь дневного пребывания, в котором дети
+                и учатся, и равзлекаются. Подробнее смотрите в "Летний лагерь"
+            </span>
+        </div>
+        <div class="question">
+            <div class="text-ques">
+                <h5>Что, если ребенок не уверен, что ему понравится?</h5>
+            </div>
+            <div>
+                <button class="button-ques" onclick="view('t6')" ; return false><img
+                        src="\images/plus.png" width="30" height="30"> </button>
+            </div>
+            <span id="t6" class="answer-ques">
+                Чтобы оценить насколько вам подходит обучение в Кубике, вы можете записать ребенка на пробное
+                занятие.
+            </span>
+        </div>
+        <div id="Write" class="choice">
+            <h4>ЗАПОЛНИТЕ ФОРМУ</h4>
+            <h5>Мы поможем подобрать курс для вашего ребенка и ответим на все вопросы</h5>
+        </div>
+        <div class="container">
+            <form id="contact" action="NewClient" method="post" name="contact">
+                <div class="row">
+                    <div class="col con"><input id="name" class="form-control" name="name" type="name"
+                            oninput="this.value=this.value.replace(/[^а-яА-Я]/g,'')" placeholder="Имя" required>
+                    </div>
+                    <div class="col con"><input id="phone" class="form-control" name="phone" type="phone"
+                            oninput="this.value=this.value.replace(/[^ 0-9]/g,'')" placeholder="Телефон" required>
+                    </div>
+                    <div class="col con"><input id="email" class="form-control" name="email" type="email"
+                            placeholder="E-mail">
+                    </div>
+                    <div class="col-12 con"><textarea id="msg" class="form-control" name="msg"
+                            placeholder="Дополнительная информация:"></textarea>
+                    </div>
+                    
+                </div>
+                
+                <div class="choice">
+                    <button onclick="add()" class="floating-button"> Отправить</button>
+                </div>
+               
+            </form>
+        </div>
+
+    </div>
+    <footer class="footer-distributed">
+
+			<div class="footer-right">
+
+				<a href="https://vk.com/kubik_uhta"><i class="fa fa-vk"></i></a>
+
+			</div>
+
+			<div class="footer-left">
+
+				<p class="footer-links">
+					<span class="link-1" href="#">Наши адреса: </span>
+
+					<span href="#">г. Ухта, ул. Тиманска 13,</span>
+
+					<span href="#">пгт. Водный, ул. Гагарина 16</span>
+				</p>
+
+				<p>YanaOstashova &copy; 2022</p>
+			</div>
+
+		</footer>
+
+
+
+
+
+
+    <script src="\script/scriptindex.js"></script>
+    <script src="/script/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="/script/easing.js" type="text/javascript"></script>
+<script src="/script/jquery.ui.totop.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function() {
+
+var defaults = {
+containerID: 'toTop', // fading element id
+containerHoverID: 'toTopHover', // fading element hover id
+scrollSpeed: 2000,
+easingType: 'linear'
+};
+
+ 
+$().UItoTop({ easingType: 'easeOutQuart' });
+ 
+});
+
+</script>
+</body>
+
+</html>

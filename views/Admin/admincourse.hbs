@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/css/adminstyle.css" rel="stylesheet">
+  <title>Админ: Курсы</title>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="nbody">
+
+      <div class="menu">
+        <div class="head-1">
+          <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+          <ul id='submenu' class="sub-menu">
+            <li><a class="choose-item" href="reviews">Отзывы</a></li>
+            <li><a class="choose-item" href="users">Юзеры</a></li>
+            <li><a class="choose-item" href="person">Персона</a></li>
+            <li><a class="choose-item" href="date">Даты</a></li>
+            <li><a class="choose-item" href="group">Группы</a></li>
+            <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+            <li><a class="choose-item" href="parent">Родитель</a></li>
+            <li><a class="choose-item" href="student">Ученик</a></li>
+            <li><a class="choose-item" href="contract">Договоры</a></li>
+          </ul>
+        </div>
+        <div class="head-2">
+          <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+          <ul id='submenu1' class="sub-menu">
+            <li><a class="choose-item" href="studgroup">Группы</a></li>
+            <li><a class="choose-item" href="adminstud">Ученики</a></li>
+            <li><a class="choose-item" href="adminteacher">Преподаватели</a></li>
+          </ul>
+        </div>
+        <div class="head-3">
+          <a href="#submenu3" class="main-item" tabindex="3"><u>Курсы</u></a>
+          <ul id='submenu3' class="sub-menu">
+            <li><a class="choose-item" href="admintype">Направления</a></li>
+            <li><a class="choose-item" href="admincourse">Курсы</a></li>
+            <li><a class="choose-item" href="programma">Программа</a></li>
+            <li><a class="choose-item" href="info">Инфо</a></li>
+          </ul>
+        </div>
+        <div class="head-4">
+          <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+        </div>
+        <div class="head-5">
+          <a href="request" class="main-item" tabindex="4">Заявки</a>
+        </div>
+
+        <div class="head-6">
+          <a href="task" class="main-item" tabindex="4">Задачи</a>
+        </div>
+
+        <div class="head-7">
+          <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+        </div>
+        <div class="head-8">
+
+        </div>
+        <div class="head-9"></div>
+      </div>
+
+      <div class="main">
+        <div class="main-head">
+          <h3>Курсы</h3>
+        </div>
+
+        <!-- Поиск-->
+        <!--
+          <form>
+              <input class="place_for_search" type="text" id="text-to-find" value="" placeholder="Search" autofocus> 
+              <input class="button_for_turn_back" type="button" onclick="javascript: FindOnPage('text-to-find',false); return false;" value=" " title="Отменить поиск">
+              <input class="button_for_search" type="submit" onclick="javascript: FindOnPage('text-to-find',true); return false;" value=" " title="Начать поиск">
+            </form>
+        -->
+        <br>
+        <table align="center">
+
+          <tbody>
+            <tr class="name">
+
+              <td style="width: 300px">Название</td>
+              <td style="width: 50px">Возраст</td>
+              <td style="width: 300px">О курсе</td>
+              <td style="width: 50px">Всего <br> уроков</td>
+              <td style="width: 50px">Уроков
+                <br>в неделю
+              </td>
+              <td style="width: 50px">Курс<br> (мес)</td>
+              <td>Направление</td>
+              <td style="width: 90px">Формат</td>
+              <td>Преподаватель</td>
+
+              <td class="change">Действие</td>
+            </tr>
+
+            <tr>
+              <form action="AddCourse" method="post">
+                <td style="width: 300px"><input name="NameCourse" style="width: 300px" type="text" required></td>
+                <td style="width: 50px"><input name="Age" style="width: 50px" type="text" required></td>
+                <td style="width: 300px"><textarea name="About" required></textarea></td>
+                <td style="width: 50px"><input name="LesCourse" style="width: 50px" type="number" required></td>
+                <td style="width: 50px"><input name="LesWeek" style="width: 50px" type="number" required></td>
+                <td style="width: 50px"><input name="Dur" style="width: 50px" type="number" required></td>
+
+                <td style="width: 100px">
+
+                  <select name="Sort" required>
+
+
+                    <option disabled>Выберите направление</option>
+                    {{#each menusort}}
+                    <option value="{{IDSort}}"> {{NameSort}} </option>
+                    {{/each}}
+
+                  </select>
+
+                </td>
+                <td>
+
+                  <select name="Format" required style="width: 100px">
+                    <option disabled>Выберите формат</option>
+                    {{#each menuform}}
+                    <option value="{{IDFormat}}">{{NameFormat}}</option>
+                    {{/each}}
+
+                  </select>
+
+                </td>
+
+                <td>
+                  <select name="Teacher" required>
+                    <option disabled>Выберите преподавателя</option>
+                    {{#each menuteach}}
+                    <option value="{{IDTeacher}}">{{NamePerson}}</option>
+                    {{/each}}
+
+                  </select>
+                </td>
+
+                <td><button class="but-chan1" onclick="alert('Данные были добавлены')">
+                    <div style="margin: 5px;"><img class="img-change" src="images\ok.png"><span>Сохранить</span></div>
+
+                  </button>
+                  <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+              </form>
+              <div style="margin: 4%;"></div>
+
+              </td>
+
+            </tr>
+            {{#each menusor}}
+            <form action="UpCourse" method="post">
+              <tr>
+                <td style="width: 300px"><input name="NameCourse" style="width: 300px" type="text"
+                    value="{{NameCourse}}" required></td>
+                <td style="width: 50px"><input name="Age" style="width: 50px" style="text-align:center;" type="text"
+                    value="{{Age}}" required></td>
+                <td style="width: 300px"><textarea name="About" required>{{AboutCourse}}</textarea></td>
+                <td style="width: 50px"><input name="LesCourse" style="width: 50px; text-align:center;" type="number"
+                    value="{{LessonInCourse}}" required></td>
+                <td style="width: 50px"><input name="LesWeek" style="width: 50px; text-align:center;" type="number"
+                    value="{{LessonInWeek}}" required> </td>
+                <td style="width: 50px"><input name="Dur" style="width: 50px;text-align:center;" type="number"
+                    value="{{Duration}}" required></td>
+                <td>
+
+                  <select name="Sort" class="Sort">
+
+                    <option value="{{IDSort}}"> {{NameSort}}</optin>
+
+                  </select>
+
+                </td>
+
+                <td style="width: 100px">
+                  <select class="Format" name="Format" style="width: 100px">
+
+                    <option value="{{IDFormat}}">{{NameFormat}}</optin>
+
+                  </select>
+                </td>
+                <td><select class="Teacher" name="Teacher">
+
+                    <option value="{{IDTeacher}}">{{NamePerson}}</optin>
+
+                  </select> </td>
+
+                <td><button class="but-chan1" onclick="alert('Данные были изменены')">
+
+                    <input name="Course" hidden type="text" value="{{IDCourse}} ">
+                    <div style="margin: 5px;"><img class="img-change" src="images\ok.png"><span>Сохранить</span></div>
+                    <input type="hidden">
+                  </button>
+            </form>
+            <form action="DelCourse" method="post">
+              <div style="margin: 4%;"></div>
+              <button class="but-chan2" onclick="alert('Данные были удалены')">
+                <input name="Course" hidden type="number" value="{{IDCourse}}">
+                <input type="hidden" >
+                <div style="margin: 5px"><img class="img-change" src="images\del.png"><span>Удалить</span></div>
+              </button>
+
+            </form>
+            </td>
+
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  //направление
+  let i = 0;
+  let j = 0;
+  let masG = new Array;
+  masG = [];
+  {{#each menusort}}
+  masG.push("{{NameSort}}");
+  {{/each}}
+
+      while (i < masG.length) {
+        let select = document.getElementsByClassName('Sort')[i];
+        while (j < masG.length) {
+          var gr = document.createElement('option');
+          gr.value = j + 1;
+          gr.innerHTML = masG[j];
+          select.appendChild(gr);
+          j++;
+        }
+        i++;
+        j = 0;
+      }
+      //формат
+      i = 0;
+      j = 0;
+      let masF = new Array;
+      masF = [];
+      {{#each menuform}}
+      masF.push("{{NameFormat}}");
+      {{/each}}
+
+          while (i < masF.length) {
+            let select = document.getElementsByClassName('Format')[i];
+            while (j < masF.length) {
+              var gr = document.createElement('option');
+              gr.value = j + 1;
+              gr.innerHTML = masF[j];
+              select.appendChild(gr);
+              j++;
+            }
+            i++;
+            j = 0;
+          }
+          //учитель
+          i = 0;
+          j = 0;
+          let masT = new Array;
+          masT = [];
+          {{#each menuteach}}
+          masT.push("{{NamePerson}}");
+          {{/each}}
+
+              while (i < masT.length) {
+                let select = document.getElementsByClassName('Teacher')[i];
+                while (j < masT.length) {
+                  var gr = document.createElement('option');
+                  gr.value = j + 1;
+                  gr.innerHTML = masT[j];
+                  select.appendChild(gr);
+                  j++;
+                }
+                i++;
+                j = 0;
+              }
+</script>
+
+</html>

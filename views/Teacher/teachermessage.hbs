@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   
+
+    <link rel="stylesheet" href="\css\studstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box-1">
+            <div class="header">
+                <div class="head-1">
+                    <img src="/images/logo.png" width="100" height="100">
+
+                </div>
+                <div class="head-2">
+                    <a class="head-text " href="/teacherpanel/{{idteacher}}">Курс</a>
+                </div>
+                <div class="head-3">
+                    <a class="head-text " href="/teacherschedule/{{idteacher}}">Расписание</a>
+                </div>
+                <div class="head-4">
+                    <a class="head-text " href="/teachertask/{{idteacher}}">Задачи</a>
+
+                </div>
+                <div class="head-5">
+                    <a class="head-text " href="/teachermessage/{{idteacher}}">Уведомления</a>
+
+                </div>
+
+            </div>
+        </div>
+        <div >
+            <button class="teach-header" onclick='openformMy()'>Мои уведомления</button>
+            <button class="teach-header2" onclick='openformSend()'>Отправленные уведомления</button>
+             <button class="teach-header2" onclick='openform()'>Создать уведомление</button>
+        </div>
+        
+    </div>
+
+
+
+    <div class="stud-new">
+        <div class="new-mes">
+            <div class="op-form" id="form">
+                <form action="AddMes" method="POST">
+
+                    <br>
+
+                    <div style="margin-bottom:1%;" id="studenthidden">
+                        <select style="font-size: 18px;" name="NameSt">
+                            {{#each menust}}
+                            <option value="{{IDUser}}">{{NamePerson}}</option>
+                             {{/each}}
+                          
+                        </select>
+                    </div>
+
+                    <p class="new-mes">Текст уведомления:</p>
+                    <div class="newtext">
+
+                        <textarea name="txt" style="width:50%;" id='text-form'></textarea>
+                      {{#each menunt}}
+                       <input type="hidden" name="stud" type="text" value="{{Login}}">
+                       <input type="hidden" name="NameTeach" type="text" value="{{IDUser}}">
+                    {{/each}}
+                        <p> <button type="submit" class="new-mes" onclick="alert('Данные были отправлены')">Отправить</button> </p>
+
+                    </div>
+                   
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+    <div>
+        <form id="mes">
+        <table style="width: 40%;" align="center">
+                        <tbody>
+                            <tr class="name">
+                                <td>Уведомление</td>
+                               
+                            </tr>
+                            {{#each menumes}}
+                            <tr>
+                                 <input type="hidden" name="NameTeach" value="{{IDUser}}">
+                                                               
+                                <td  style="width: 50%;">{{TextMessage}}</td>
+                       
+
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+        </form>
+        <form id="sendmes" style="display: none;" >
+                <table style="width: 50%;" align="center">
+                        <tbody>
+                            <tr class="name">
+                                <td>Уведомление</td>
+                                 <td>Получатель</td>
+                                 <td>Действие</td>
+                               
+                            </tr>
+                                
+                            {{#each menumy}}
+                            
+                            <tr>
+                                 <form  action="UpMes" method="post">  
+                                                     
+                                <td  style="width: 50%;">
+                                     
+                                    
+                                    <input name="Txt"  style="width: 80%;" value="{{TextMessage}}">
+                                </td>
+                                <td >
+                                        
+                                        <input name="NameTo" type="hidden" value="{{IDTo}}">
+                                        <input  value="{{NameTo}}">
+                                </td>
+
+                                <td><button class="but-chan1" onclick="alert('Данные были изменены')">
+                                    <div style="margin: 5px;">
+                                      <input type="hidden" name="teach" type="text" value="{{LoginFrom}}">
+                                            <input name="Mes" type="hidden" value="{{IDMessage}}">  
+                                        <img class="img-change" src="/images\ok.png"><span>Сохранить</span>
+                                        
+                                    </div>
+                  
+                                  </button>
+                        </form>
+                                 
+                                
+                                  <form method="post" action="DelMes">
+
+                                  
+                                  <button class="but-chan2" onclick="alert('Данные были удалены')">
+                                    <div style="margin: 5px">
+                                         <input name="Mes" type="hidden" value="{{IDMessage}}">
+                                        <input type="hidden" name="stud" type="text" value="{{LoginFrom}}">
+                                        <img class="img-change" src="/images\del.png"><span>Удалить</span></div>
+                                  </button>
+                                  </form>
+                                </td>
+                             </tr>
+                              {{/each}}
+                        </tbody>
+                    </table>
+       </form>  
+    </div>
+    
+
+    <script>
+        //функция открия формы для написания уведомления
+        document.getElementById('form').style.display = 'none';
+
+        //открытие/закрытие форму при клике
+        function openform() {
+
+            display = document.getElementById('form').style.display;
+
+            if (display == 'none') {
+                document.getElementById('form').style.display = 'block';
+                 document.getElementById('sendmes').style.display='none';
+                   document.getElementById('mes').style.display='none';
+            } else {
+                document.getElementById('form').style.display = 'none';
+            }
+        }
+         function openformMy() {
+
+            display = document.getElementById('mes').style.display;
+
+            if (display == 'none') {
+                document.getElementById('mes').style.display = 'block';
+                 document.getElementById('sendmes').style.display='none';
+                  document.getElementById('form').style.display = 'none';
+            } else {
+                document.getElementById('mes').style.display = 'none';
+            }
+        }
+          function openformSend() {
+
+            display = document.getElementById('sendmes').style.display;
+
+            if (display == 'none') {
+                document.getElementById('sendmes').style.display = 'block';
+                document.getElementById('mes').style.display='none';
+                 document.getElementById('form').style.display = 'none';
+            } else {
+                document.getElementById('sendmes').style.display = 'none';
+            }
+        }
+
+
+
+
+        //функция открытия списка
+
+        function studentdiv() {
+            if (document.getElementById('studenthidden').style.display = "none")
+                document.getElementById('studenthidden').style.display = "block";
+            document.getElementById('grouphidden').style.display = "none";
+            $(Radio1).prop('checked', false);
+            $(Radio2).prop('checked', true);
+        }
+    </script>
+</body>
+
+</html>

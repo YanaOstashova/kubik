@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет ученика</title>
+
+    <link rel="stylesheet" href="/css/studstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="box-1">
+            <div class="header">
+                <div class="head-1">
+                    <img src="/images/logo.png" width="100" height="100">
+
+                </div>
+                <div class="head-2">
+                    <a class="head-text " href="/studentpanel/{{idstudent}}">Курс</a>
+                </div>
+                <div class="head-3">
+                    <a class="head-text " href="/studschedule/{{idstudent}}">Расписание</a>
+                </div>
+                <div class="head-4">
+                    <a class="head-text " href="/studtask/{{idstudent}}">Задачи</a>
+
+                </div>
+                <div class="head-5">
+                    <a class="head-text " href="/message/{{idstudent}}">Уведомления</a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="stud-header">
+        <h3>Список курсов</h3>
+    </div>
+    <!--Здесь должны выводиться курсы-->
+  
+    <div class="stud-body">
+        <div class="stud-form">
+              {{#each masscor}}
+             <div style="margin:3%;">
+                 <a id="op" class="stud-form-name" onclick='openform()'>{{NameCourse}}</a>
+             </div>
+          
+
+            {{/each}}
+            <form id="form">
+                <div class="docs">
+                    {{#each masinfo}}
+                    <div class="doc-1">
+                        <p class="stud-form-name">{{Topic}} </p>
+                        <b><a class="name-href" href="{{DocForStudent}}">Материалы урока</a></b></p>
+                    </div>
+
+                    {{/each}}
+
+                </div>
+                <br>
+                <a class="bot1" onclick='closeForm()' href="#">Скрыть</a>
+            </form>
+
+
+            <script>
+
+                document.getElementById('form').style.display = 'none';
+                function openform() {
+                    document.getElementById('form').style.display = 'block';
+
+                }
+
+                function closeForm() {
+                    document.getElementById('form').style.display = 'none';
+                }
+            </script>
+    </div>
+</body>
+
+</html>

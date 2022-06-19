@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/adminstyle.css" rel="stylesheet">
+    <title>Админ: Ученик</title>
+</head>
+
+<body>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div class="container">
+        <div class="nbody">
+                <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1"><u>Главная</u></a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                         <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Программа</a></li>
+                          <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+                </div>
+                <div class="head-5">
+                      <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                  <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+                </div>
+                <div class="head-8">
+                    
+                </div>
+                <div class="head-9"></div>
+            </div>
+
+            <div class="main">
+                <div class="main-head">
+                    <h3>Ученики</h3>
+                </div>
+
+                <br>
+                <table align="center">
+                    <tbody>
+                        <tr class="name">
+                            <td>Имя</td>
+                            <td>Имя родителя</td>
+                            <td>Дата начала обучения</td>
+                            <td style="width: 200px;">Действие</td>
+                        </tr>
+                        <tr>
+                            <form action="AddStud" method="post">
+                             <td> <select name = "Person">
+                                    <option disabled >Выберите Ученика</option>
+                                    {{#each menunp}} <option  value="{{IDPerson}}">{{NamePerson}}</option>{{/each}}
+                                    
+                                </select>
+                            </td>
+                              <td> <select name="Parent"  >
+                                    <option disabled >Выберите Родителя</option>
+                                     {{#each menunam}} <option  value="{{IDParent}}">{{NamePar}}</option>{{/each}}
+                                   </select>
+                            </td>
+                           
+                            <td> <select name="Study">
+                                   
+                                       {{#each menust}} <option value="{{IDStudy}}">{{DateStudy}}</option>{{/each}}
+                                  
+                                </select>
+                            </td>
+                            <td><button class="but-chan1">
+                                    <div style="margin: 5px;"><img class="img-change"
+                                            src="images\ok.png"><span>Сохранить</span>
+                                    </div>
+                                </button>
+                                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                </form>
+                                <div style="margin: 4%;"></div>
+                            </td>
+
+                        </tr>
+                    {{#each menuper}}
+                        <tr>
+                            
+                      <td><input name="Person" type="text" value="{{NameStud}}"></td>
+                          
+                           <td><input name="Parent" type="text" value="{{NamePar}}"</td>
+                            <td> <input  name="Study" type="text" value="{{DateStudy}}"></td>
+                            <td>
+                             
+                                <div style="margin: 4%;"></div>
+                                <form action="DelStud" method="post">
+                                <button class="but-chan2">
+                                    <input name="Student" hidden type="number" value="{{IDStudent}}">
+                                    <div style="margin: 5px"><img class="img-change"
+                                            src="images\del.png"><span>Удалить</span>
+                                    </div>
+                                </button>
+                                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                </form>
+                            </td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    
+<script>
+    let i = 0;
+    let ArrPerson = new Array();
+    ArrPerson = [];
+    {{#each menupar}}
+      ArrPerson.push("{{NamePerson}}");
+    {{/each}}
+    while(i < {{menup}} ){
+      select = document.getElementsByClassName('parent')[i];
+        var opt = document.createElement('option');
+        opt.value = i;
+        opt.innerHTML = ArrPerson[i];
+        select.appendChild(opt);
+    ++i;
+    };
+    i = 0;
+  while(i < {{menup}}+1){
+      select = document.getElementsByClassName('parentnew')[i];
+      {{#each menupar}}
+        var opt = document.createElement('option');
+        opt.value = '{{ PersonParentB }}' ;
+        opt.innerHTML = '{{NamePerson}}';
+        select.appendChild(opt);
+      {{/each}}
+    ++i;
+    };
+    
+    
+</script>
+</body>
+
+</html>

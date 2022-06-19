@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/adminstyle.css" rel="stylesheet">
+    <title>Админ: Отзывы</title>
+</head>
+
+<body>
+   
+    <div class="container">
+
+        <div class="nbody">
+
+            <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1"><u>Главная</u></a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                        <li><a class="choose-item" href="adminteacher">Преподаватели</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Программа</a></li>
+                        <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+                </div>
+                <div class="head-5">
+                    <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                    <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+                </div>
+                <div class="head-8">
+
+                </div>
+                <div class="head-9"></div>
+            </div>
+
+
+            <div class="main">
+                <div class="main-head">
+                    <h3>Отзывы</h3>
+                </div>
+                
+                <table align="center">
+
+                    <tbody>
+                        <tr class="name">
+                            <td style="width: 900px ;">Текст</td>
+                            <td style="width: 230px;">Автор отзыва</td>
+                            <td style="width: 190px;" class="change">Статус отправки</td>
+                            <td style="width: 190px;" class="change">Действие</td>
+                        </tr>
+                          <tr>
+                            <form action="AddReview" method="post">
+                                <td><textarea style="width:800px; height:100px;" name="Text" required></textarea></td>
+                               <td style="width: 230px;"><input style="width: 200px;" name="Author" type="text" required></td>
+                                 <td>
+                                   
+                                 <select name="Status">
+                                      {{#each menu13}}
+                                    <option value="{{IDStRev}}">{{Status}}</option>
+                                     {{/each}}
+                                 </select>
+                                    </td>    
+                                                                   
+                                <td>
+                                    
+                                   
+                                    <button type="submit" class="but-chan1"  onclick="alert('Данные были добавлены')">
+                                        <div style="margin: 5px"> <img class="img-change"
+                                                src="images\ok.png"><span>Сохранить</span>
+                                        </div>
+                                    </button>
+                                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                            </form>
+
+                           </td>
+                             
+                        </tr>
+                        {{#each menu12}}
+                        <tr>
+                            <td>
+                                <form action="UPDATEReview" method="post">
+                                    <input hidden type="number" name="FEED" value="{{IDFeedback}}">
+                                    <textarea
+                                        style="width:800px; height:100px;" name="Text">
+                          {{TextFeedback}}
+                        </textarea>
+                            </td>
+                            <td>
+                               <input name="Author" type="text" value="{{Author}}">
+                            </td>
+                           <td>
+                               <select class="Status" name="Status">
+                                <option   value="{{ID_StRev}}">{{Status}} </option>
+                                </select>
+                            </td>
+                            <td>   
+                                <button class="but-chan1"  onclick="alert('Данные были изменены')">
+                                    <div style="margin: 5px;"><img class="img-change"
+                                            src="images\ok.png"><span>Сохранить</span>
+                                    </div></button>
+                               <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                                </form>
+                                <div style="margin: 4%;"></div>
+                                <form action="DelReview" method="post">
+                                    
+                                    <button class="but-chan2" onclick="alert('Данные были удалены')">
+                                      
+                                        <input name="FEED" hidden type="number" value="{{IDFeedback}}">
+                                        <div style="margin: 5px"><img class="img-change"
+                                                src="images\del.png"><span>Удалить</span>
+                                        </div>
+                                             </button>
+                                     <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                                </form>
+                            </td>
+                        </tr>
+                           {{/each}}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+     <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</body>
+<script>
+    //группа
+    let i = 0;
+    let j = 0;
+    let masG = new Array;
+    masG = [];
+    {{#each menu13}}
+    masG.push("{{Status}}");
+    {{/each}}
+        let Check = document.getElementsByClassName('Status');
+      while( i < Check.length){
+        let select = document.getElementsByClassName('Status');
+        while(j < masG.length){
+          var gr = document.createElement('option');
+          gr.value = j+1;
+          gr.innerHTML = masG[j];
+          select[i].appendChild(gr);
+          j++;
+      }
+      i++;
+      j=0;
+    }
+   
+</script>
+</html>

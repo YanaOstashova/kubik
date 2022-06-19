@@ -1,0 +1,262 @@
+.sub-menu {
+   display: none;
+   color: black;
+   padding-left: 105px;
+
+}
+
+.main-item {
+   display: inline-block;
+   border: none;
+   font-size: 20px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   color: black;
+
+}
+select{
+   font-size: 17px;
+   font-family: FreeMono, monospace;
+}
+input{
+   font-size: 17px;
+   font-family: FreeMono, monospace;
+}
+textarea {
+  
+	width: 80%;
+	height: 120px;
+   margin:1%;
+   font-size: 17px;
+   font-family: FreeMono, monospace;
+   display: block;
+
+}
+
+.choose-item{
+ 
+   font-size: 18px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   color: black;
+  
+
+}
+#submenu:target {
+   display: block;
+   font-size: 14px;
+   font-family: FreeMono, monospace;
+  
+   margin: 0;
+
+
+}
+#submenu1:target {
+   display: block;
+   font-size: 14px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   margin: 0;
+}
+
+.menu {
+   font-size: 14px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   /*padding-left: 10px;
+   padding-top: 20px;*/
+   color: black;
+   display: grid;
+   grid-template-columns: repeat(8,2fr);
+   grid-template-areas: "header";
+   background-color: #A4DDF2;
+}
+[class^="head-"] {
+   
+   /* Размещаем контейнеры по центру */
+   display: grid;
+   place-items: center;
+   margin-top: 20%;
+   
+}
+.container {
+    
+   display: grid;
+      gap: 40px;
+   /*height: 20vh;*/
+}
+#submenu2:target {
+   display: block;
+   text-decoration: none;
+   font-size: 14px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   margin: 0;
+}
+
+#submenu3:target {
+   display: block;
+   text-decoration: none;
+   font-size: 14px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+}
+
+/*.nbody {
+   display: grid;
+   gap: 20px;
+   grid-template-columns: 120px auto;
+}
+*/
+.main {
+   margin-top: 50px;
+   margin-left: 30px;
+
+}
+
+table tr td {
+   border: 1px solid black;
+  height: auto;
+  margin: 0;
+  
+  font-size: 17px;
+  font-family: FreeMono, monospace;
+}
+
+td {
+   text-align: center;
+   font-size: 17px;
+   font-family: FreeMono, monospace;
+   padding:5px;
+ 
+}l
+u {
+   text-decoration:   3px double overline #FF3028;
+}
+
+.img-change {
+   width: 10px;
+   height: 10px;
+   padding: 0 0 0 0;
+   text-align: center;
+}
+
+.but-chan1 {
+   border-radius: 5px;
+   background-color: #32CD32;
+   width: 115px;
+   border: none;
+   margin-top: 3%;
+   margin-bottom: 3%;
+
+}
+.choose{
+   margin-left:10%;
+}
+
+.but-chan2 {
+   border-radius: 5px;
+   background-color: #FA8072;
+   width: 115px;
+   border: none;
+   margin-bottom: 3%;
+}
+
+
+.name {
+   background-color: #D3D3D3;
+   border: 4px double black;
+}
+
+.menu-photo {
+
+   text-align: center;
+   /*opacity: 0.8;*/
+   margin-bottom: 2%;
+}
+
+.find-photo {
+  text-align: center;
+  margin: 1%;
+
+
+}
+.find {
+   padding-left: 2%;
+ }
+.but-chan3 {
+   border-radius: 5px;
+   background-color: #FA8072;
+   width: 115px;
+   border: none;
+  
+   margin-right: 10px;
+}
+
+.but-chan4 {
+   border-radius: 5px;
+   background-color: #32CD32;
+   width: 115px;
+   border: none;
+   
+   margin-right: 10px;
+}
+
+.table-photo {
+   border: 1px solid grey;
+}
+
+.select-photo {
+   width: 20px;
+
+}
+
+.table-schedule {
+   border: 1px solid grey;
+   width: 100%;
+}
+
+.schedule {
+   margin-top: 6%;
+   margin-left: 6%;
+
+}
+
+.name-schedule {
+   border: 1px solid grey;
+   padding: 1%;
+   text-align: center;
+}
+
+.day {
+   color: black;
+   text-decoration: none;
+}
+
+.but-save {
+   color: black;
+   text-decoration: none;
+   float: right;
+}
+
+.admin-mes {
+   margin-top: 8%;
+   margin-left: 8%;
+   font-size: 16px;
+   font-family: FreeMono, monospace;
+   text-decoration: none;
+   color: black;
+}
+.text-mes{
+   font-size: 16px;
+   font-family: FreeMono, monospace;
+   text-decoration: underline;
+   color: black;
+   
+}
+.admin-new-mes{
+ text-align: center;
+}
+.main-head{
+   text-align: center;
+}

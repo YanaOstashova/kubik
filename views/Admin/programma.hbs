@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/adminstyle.css" rel="stylesheet">
+    <title>Админ: Программа</title>
+</head>
+
+<body>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div class="container">
+        <div class="nbody">
+           <div class="menu">
+            <div class="head-1">
+                <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                <ul id='submenu' class="sub-menu">
+                    <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                    <li><a class="choose-item" href="users">Юзеры</a></li>
+                    <li><a class="choose-item" href="person">Персона</a></li>
+                    <li><a class="choose-item" href="date">Даты</a></li>
+                     <li><a class="choose-item" href="group">Группы</a></li>
+                    <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                    <li><a class="choose-item" href="parent">Родитель</a></li>
+                    <li><a class="choose-item" href="student">Ученик</a></li>
+                    <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                </ul>
+            </div>
+            <div class="head-2">
+                <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                <ul id='submenu1' class="sub-menu">
+                    <li><a class="choose-item" href="studgroup">Группы</a></li>
+                    <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                     <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                </ul>
+            </div>
+            <div class="head-3">
+                <a href="#submenu3" class="main-item" tabindex="3"><u>Курсы</u></a>
+                <ul id='submenu3' class="sub-menu">
+                    <li><a class="choose-item" href="admintype">Направления</a></li>
+                    <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                    <li><a class="choose-item" href="programma">Программа</a></li>
+                      <li><a class="choose-item" href="info">Инфо</a></li>
+                </ul>
+            </div>
+            <div class="head-4">
+                <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+            </div>
+            <div class="head-5">
+                  <a href="request" class="main-item" tabindex="4">Заявки</a>
+            </div>
+
+            <div class="head-6">
+              <a href="task" class="main-item" tabindex="4">Задачи</a>
+            </div>
+
+            <div class="head-7">
+                <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+            </div>
+            <div class="head-8">
+                
+            </div>
+            <div class="head-9"></div>
+        </div>
+            <div class="main">
+                <div class="main-head">
+                    <h3>Методические материалы</h3>
+                </div>
+
+               
+                <br>
+                <table align="center">
+                    <tbody>
+                        <tr class="name">
+
+                            <td>Курс</td>
+
+                            <td style="width: 30px;">№ урока</td>
+                            <td>Тема</td>
+                            <td>Материалы для преподавателя</td>
+                            <td>Материалы для учеников</td>
+                            <td class="change">Действие</td>
+                        </tr>
+                        <tr>
+                             <form action="AddProg" method="POST">
+                            <td style="width: 50px;">
+                             <select  name="Cr">
+                                 <option disabled>Выберите курс</option>
+                                     {{#each menucor}}
+                                    
+                                     <option value="{{IDCourse}}">{{NameCourse}}</option>
+                                      {{/each}}
+                            </select>
+
+                            </td>
+                            <td style="width: 30px;">
+                                <input name="NumLes" type="number" style="width: 30px;" >
+                            </td>
+                            <td>
+                                <input name="Topic" style="width: 85%;" type="text">
+                            </td>
+                            <td>
+                                <input name="DocT" style="width: 85%;" type="text">
+                            </td>
+                            <td>
+                                <input name="DocS" style="width: 85%;" type="text">
+                            </td>
+
+
+                            <td><button type="submit" class="but-chan1" onclick="alert('Данные были добавлены')">
+                                    <div style="margin: 5px;"><img class="img-change"
+                                            src="images\ok.png"><span>Сохранить</span>
+                                    </div>
+
+                                </button>
+                                </form>
+
+                            </td>
+
+                        </tr>
+                        {{#each menusor}}
+                        <tr>
+                            <form action="UpProg" method="post">
+                                
+                            <td><input hidden name="Cr"  value="{{IDCourse}}"><input value="{{NameCourse}}"></td>
+                            <td style="width: 30px;"><input hidden name="Les"  value="{{IDLesson}}"><input style="width: 30px; text-align: center;" name="NumLes" style="text-align: center;" value="{{NumberLesson}}"></td>
+                            <td><input name="Topic" value="{{Topic}}"></td>
+                            <td><input name= "DocT" type="button" value="Материалы" onClick="window.open('{{DocForTeacher}}')"></td>
+                            <td><input name="DocS" type="button" value="Материалы" onClick="window.open('{{DocForStudent}}')"></td>
+                            <td><button class="but-chan1" onclick="alert('Данные были изменены')">
+                                    <div style="margin: 5px;"><img class="img-change"
+                                            src="images\ok.png"><span>Сохранить</span>
+                                    </div>
+                                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+                                </button>
+                                </form>
+
+                                <div style="margin: 4%;"></div>
+                                   <form action="DelProg" method="post">
+                                       <input hidden name="Les" value="{{IDLesson}}">
+                                        <button class="but-chan2" onclick="alert('Данные были удалены')">
+                                        <div style="margin: 5px"><img class="img-change" src="images\del.png">
+                                        <span>Удалить</span>
+                                        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                   </form>
+                                    </div>
+                                </button>
+                               
+                              
+                            </td>
+
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

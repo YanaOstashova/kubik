@@ -1,0 +1,115 @@
+/* Включение отступа и границы в общую ширину и высоту элемента */
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Удалите поля и отступы из списка 
+  ul {
+    margin: 0;
+    padding: 0;
+  }*/
+  
+  /* Стиль элементов списка */
+  ul#myUL{
+    padding: 0;
+  }
+  ul li#MyLi {
+    cursor: pointer;
+    position: relative;
+    margin: 1% 0 0 2%;
+    
+    transition: 0.2s;
+    font-size: 3vh;
+    width: 73%;
+    
+  
+    /* сделайте элементы списка невыбираемыми */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+
+  #myInput{
+    border: 1px solid black;
+  }
+  /* При нажатии на кнопку, добавить цвет фона и вычеркнуть текст */
+  ul li.checked {
+    background: #888;
+   
+    text-decoration: line-through;
+  }
+  
+  /* Добавить "checked" отметить при нажатии на кнопку */
+  ul li.checked::before {
+    content: '';
+    position: absolute;
+   
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+  }
+  
+  /* Стиль кнопки "Закрыть" */
+  .close {
+    position: absolute;
+    
+    right: 0;
+    top: 0;
+    
+  }
+  
+  .close:hover {
+    background-color: #A4DDF2;
+    color: white;
+  }
+  
+  /* Стиль заголовка */
+  .header {
+    /*background-color: #A4DDF2;*/
+    
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+  
+  /* Очистить поплавки после заголовка */
+  .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Стиль ввода */
+  input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 50%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+  }
+  
+  /* Стиль кнопки "Добавить" */
+  .addBtn {
+    padding: 10px;
+    width: 25%;
+    background: #7380e2;
+    color: rgb(0, 0, 0);
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+  
+  .addBtn:hover {
+    background-color: #bbb;
+  }
+  

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/adminstyle.css" rel="stylesheet">
+    <title>Админ: Преподаватель</title>
+</head>
+
+<body>
+    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+    <div class="container">
+        <div class="nbody">
+           <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2"><u>Отчеты</u></a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                         <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Методические указания</a></li>
+                          <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+                </div>
+                <div class="head-5">
+                      <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                  <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4">Уведомления</a>
+                </div>
+                <div class="head-8">
+                    
+                </div>
+                <div class="head-9"></div>
+            </div>
+            <div class="main">
+                <div class="main-head">
+                    <h3>Преподаватели</h3>
+                </div>
+                 <!-- Поиск-->
+      <!--
+          <form>
+              <input class="place_for_search" type="text" id="text-to-find" value="" placeholder="Search" autofocus> 
+              <input class="button_for_turn_back" type="button" onclick="javascript: FindOnPage('text-to-find',false); return false;" value=" " title="Отменить поиск">
+              <input class="button_for_search" type="submit" onclick="javascript: FindOnPage('text-to-find',true); return false;" value=" " title="Начать поиск">
+            </form>
+        -->
+                <br>
+                <table align="center">
+                    <tbody>
+                        <tr class="name">
+
+                            <td style="width:300px ;">ФИО</td>
+                            <td style="width:120px ;">Дата рождения</td>
+                            <td style="width:300px ;">Email</td>
+                            <td style="width:120px ;">Номер телефона</td>
+                            <td style="width:120px ;">Логин</td>
+                            <td style="width:120px ;">Пароль</td>
+                         
+                        </tr>
+                        {{#each menuper}}
+                        <tr>
+                            <td> {{NamePerson}}   </td>
+                             <td>  {{Birthday}}  </td>
+                              <td> {{Email}}   </td>
+                               <td>  {{Phone}}  </td>
+                                <td>{{Login}}</td>
+                                <td>{{KPassword}}</td>
+                              
+                              
+                        
+                       </tr>
+                       {{/each}}
+                        
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</body>
+
+</html>

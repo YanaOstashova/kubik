@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/adminstyle.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <title>Админпанель</title>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="nbody">
+            <div class="menu">
+                <div class="head-1">
+                    <a href="#submenu" class="main-item" tabindex="1">Главная</a>
+                    <ul id='submenu' class="sub-menu">
+                        <li><a class="choose-item" href="reviews">Отзывы</a></li>
+
+                        <li><a class="choose-item" href="users">Юзеры</a></li>
+                        <li><a class="choose-item" href="person">Персона</a></li>
+                        <li><a class="choose-item" href="date">Даты</a></li>
+                         <li><a class="choose-item" href="group">Группы</a></li>
+                        <li><a class="choose-item" href="teacher">Преподаватель</a></li>
+                        <li><a class="choose-item" href="parent">Родитель</a></li>
+                        <li><a class="choose-item" href="student">Ученик</a></li>
+                        <li><a class="choose-item" href="contract">Договоры</a></li>
+
+                    </ul>
+                </div>
+                <div class="head-2">
+                    <a href="#submenu1" class="main-item" tabindex="2">Отчеты</a>
+                    <ul id='submenu1' class="sub-menu">
+                        <li><a class="choose-item" href="studgroup">Группы</a></li>
+                        <li><a class="choose-item" href="adminstud">Ученики</a></li>
+                         <li><a class="choose-item"  href="adminteacher">Преподаватели</a></li>
+
+
+                    </ul>
+                </div>
+                <div class="head-3">
+                    <a href="#submenu3" class="main-item" tabindex="3">Курсы</a>
+                    <ul id='submenu3' class="sub-menu">
+                        <li><a class="choose-item" href="admintype">Направления</a></li>
+                        <li><a class="choose-item" href="admincourse">Курсы</a></li>
+                        <li><a class="choose-item" href="programma">Методические указания</a></li>
+                          <li><a class="choose-item" href="info">Инфо</a></li>
+                    </ul>
+                </div>
+                <div class="head-4">
+                    <a href="adminpanel" class="main-item" tabindex="3">Расписание</a>
+                </div>
+                <div class="head-5">
+                      <a href="request" class="main-item" tabindex="4">Заявки</a>
+                </div>
+
+                <div class="head-6">
+                  <a href="task" class="main-item" tabindex="4">Задачи</a>
+                </div>
+
+                <div class="head-7">
+                    <a href="adminmessage" class="main-item" tabindex="4"><u>Уведомления</u></a>
+                </div>
+                <div class="head-8">
+                    
+                </div>
+                <div class="head-9"></div>
+            </div>
+
+            <div class="main">
+                <div class="main-head">
+                    <h3>Уведомления</h3>
+                </div>
+                
+                <div class="admin-new-mes">
+
+                    <a onclick='openform()' class="text-mes">Создать уведомление</a>
+
+                    <div id='form'>
+                        <form  action="requestFine" method="POST">
+                            <br>
+                            <label>Для кого уведомление</label>
+                            <br>
+
+
+                            <a onclick="studentdiv()">
+                                <input type="radio" id="Radio2" name="RadioConStudent">Ученик
+                            </a>
+                            <a onclick="teacherdiv()">
+                                <input type="Radio" id="Radio3" name="RadioConTeacher">Преподаватель
+                            </a>
+              
+                            <div id="studenthidden" style="display:none">
+                                  <select name="nameReqSt">
+                                    {{#each menust}}
+                                    <option value="{{IDUser}}">{{NamePerson}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div id="teacherhidden" style="display:none">
+                                
+                                <select  name="nameReqTe">
+                                    {{#each menuper}}
+                                    <option value="{{IDT}}">{{NamePerson}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <br>
+                            <label>Текст уведомления:</label>
+                            <div>
+
+                                <textarea name="Reques"></textarea>
+                                <p>
+                                    <button type="submit" class="text-mes" onclick="alert('Данные были отправлены')">Отправить</button>
+                                </p>
+
+                            </div>
+
+                        </form>
+                    </div>
+                    <table align="center">
+                        <tbody>
+                            <tr class="name">
+                                <td>Уведомление</td>
+                                 <td>Получатель</td>
+
+
+                                <td>Действие</td>
+                            </tr>
+                            {{#each menums}}
+                            <tr>
+                                <form action="UpMes" method="post">
+                                <td  style="width: 50%;"><input name="txt"  style="width: 80%;" value="{{TextMessage}}"></td>
+                                <td ><input  style="width: 90%;" value="{{NamePerson}}" readonly></td>
+
+                                <td><button class="but-chan1" onclick="alert('Данные были изменены')">
+                                    <div style="margin: 5px;">
+                                         <input name="Mes" type="hidden" value="{{IDMessage}}">
+                                        <img class="img-change" src="images\ok.png"><span>Сохранить</span></div>
+                                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                  </button>
+                                  </form>
+                                  <form method="post" action="DelMes">
+
+                                  
+                                  <button class="but-chan2" onclick="alert('Данные были изменены')">
+                                    <div style="margin: 5px">
+                                         <input name="Mes" type="hidden" value="{{IDMessage}}">
+                                         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                                        <img class="img-change" src="images\del.png"><span>Удалить</span></div>
+                                  </button>
+                                  </form>
+                                </td>
+
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<script>
+
+    function studentdiv() {
+        if (document.getElementById('studenthidden').style.display = "none")
+            document.getElementById('studenthidden').style.display = "block";
+    
+        document.getElementById('teacherhidden').style.display = "none";
+      
+        $(Radio2).prop('checked', true);
+        $(Radio3).prop('checked', false);
+    }
+    function teacherdiv() {
+        if (document.getElementById('teacherhidden').style.display = "none")
+            document.getElementById('teacherhidden').style.display = "block";
+       
+        document.getElementById('studenthidden').style.display = "none";
+        
+        $(Radio3).prop('checked', true);
+        $(Radio2).prop('checked', false);
+    }
+    //функция открия формы для написания уведомления
+    document.getElementById('form').style.display = 'none';
+
+    //открытие/закрытие форму при клике
+    function openform() {
+
+        display = document.getElementById('form').style.display;
+
+        if (display == 'none') {
+            document.getElementById('form').style.display = 'block';
+        } else {
+            document.getElementById('form').style.display = 'none';
+        }
+    }
+</script>
+</html>

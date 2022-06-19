@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/studstyle.css" rel="stylesheet">
+    <script src="/script/studtask.js"></script>
+    
+  <link rel="stylesheet" href="/css/task.css">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="box-1">
+            <div class="header">
+                <div class="head-1">
+                    <img src="/images/logo.png" width="100" height="100">
+
+                </div>
+                <div class="head-2">
+                    <a class="head-text " href="/studentpanel/{{idstudent}}">Курс</a>
+                </div>
+                <div class="head-3">
+                    <a class="head-text " href="/studschedule/{{idstudent}}">Расписание</a>
+                </div>
+                <div class="head-4">
+                    <a class="head-text " href="/studtask/{{idstudent}}">Задачи</a>
+                   
+                </div>
+                <div class="head-5">
+                    <a class="head-text " href="/message/{{idstudent}}">Уведомления</a>
+
+                </div>
+                            
+            </div>
+        
+            <div class="stud-header">
+                <h3>Мой список дел</h3>
+            </div>
+        </div>
+             <div class="stud-body">
+                <div class="task">
+                    <form action="AddTaskSt" method="post">
+                    <input hidden name="num" type="text" value="{{numstud}}">
+                    <input hidden class="stud" name="stud" type="text" value="{{idstudent}}">
+                    <input name="Task">
+
+                     <button class="new-task" > <p class="txt-task">Добавить</p></button>
+                     </form>
+                 </div>
+            
+                {{#each menutask}}
+                 <div class="task">
+                  <form method="post" action="delTaskSt">
+                    <input hidden name="stud" type="text" value="{{Login}}">
+                  <input name="ToName" type="number" hidden value="{{IDToDoList}}" >
+                    <p class="stud-form-name">{{TextList}} <button  class="new-task-del" > Удалить</button> </p>
+                 </div>
+                 </form>
+                 {{/each}}
+            </div>
+            </div>
+          
+                   
+                
+                
+      
+    
+         
+       
+      
+       
+</body>
+</html>
