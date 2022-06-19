@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const cookieParser = require ('cookie-parser')
-const { response } = require('express');
-const csurf = require('csurf');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded())
@@ -20,15 +17,6 @@ var connection = mysql.createConnection({
     database: 'kubik'
 });
 
-var db = connection.connect(
-    function (err) {
-        if (err) {
-            console.error('error connectin:' + err.stack);
-            return;
-        }
-        console.log('connecting is Ok');
-    }
-);
 
 //ПОЛУЧЕНИЕ
 
@@ -1120,6 +1108,7 @@ app.post('/DelTask', function (req, res) {
         res.redirect('task')
     })
 });
-app.listen(3000, function () {
-    console.log('work on port 3000')
+var port = process.env.PORT || 5000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
 });
